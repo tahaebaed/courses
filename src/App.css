@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  padding: 0 5%;
 }
 
 .App-logo {
@@ -35,4 +36,55 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.course-info,
+.lesson-form-control,
+.lesson-form-add-btn,
+.lesson-next-button,
+.course-details-instructor,
+.course-details-button,
+.course-details-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.course-info {
+  margin: 2rem 1rem;
+}
+
+.course-details-info {
+  align-items: flex-start;
+  height: clamp(118px, 20vh, 200px);
+  margin: 2rem 0;
+}
+.course-info_img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.course-details-instructor_img-label {
+  position: relative;
+}
+.course-details-instructor_img-icon {
+  position: absolute;
+  top: 25px;
+  right: -10px;
+}
+
+.lesson-form-add-btn {
+  justify-content: center;
+}
+.lesson-next-button {
+  justify-content: end;
+}
+
+.lesson-form-control {
+  align-items: flex-start;
+  justify-content: space-evenly;
+  margin: 1rem 0 0;
+  height: clamp(80px, 20vh, 100px);
 }
