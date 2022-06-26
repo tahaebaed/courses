@@ -44,9 +44,6 @@ export default function CourseSteps({ closeModal }) {
     setActiveStep(prevActiveStep => prevActiveStep - 1)
   }
 
-  const handleStep = step => () => {
-    setActiveStep(step)
-  }
   const initialValues = {
     name: '',
     duration: 0,
@@ -106,9 +103,7 @@ export default function CourseSteps({ closeModal }) {
       <Stepper activeStep={activeStep} sx={{ mb: 4 }}>
         {steps.map((label, index) => (
           <Step key={label} completed={completed[index]}>
-            <StepLabel color='inherit' onClick={handleStep(index)}>
-              {label}
-            </StepLabel>
+            <StepLabel color='inherit'>{label}</StepLabel>
           </Step>
         ))}
       </Stepper>

@@ -1,5 +1,5 @@
 import { PhotoCamera } from '@mui/icons-material'
-import { Button, IconButton } from '@mui/material'
+import { Button, Grid, IconButton } from '@mui/material'
 import { Field } from 'formik'
 import React, { useEffect, useState } from 'react'
 
@@ -29,54 +29,61 @@ const CourseDetailForm = ({
   }, [fileImg, setFieldValue])
   return (
     <>
-      <div className='course-details-instructor'>
-        <TheFieldText fieldName='instructor' label='instructor name' />
-        <Field as='file' name='instructorImg'>
-          {({ form, field }) => {
-            return (
-              <label
-                className='course-details-instructor_img-label'
-                htmlFor='icon-button-file'
-              >
-                <img
-                  className='course-info_img'
-                  src={
-                    values.instructorImg ||
-                    'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_640.png'
-                  }
-                  alt='instructor avatar'
-                />
-                <input
-                  accept='image/*'
-                  id='icon-button-file'
-                  type='file'
-                  error={
-                    form.errors.instructorImg && form.touched.instructorImg
-                  }
-                  onChange={e => {
-                    const file = e.target.files[0]
-                    if (file && file.type.substring(0, 5) === 'image') {
-                      setFileImg(file)
-                    } else {
-                      setFileImg(null)
-                    }
-                  }}
-                  style={{ display: 'none' }}
-                />
-                <div className='course-details-instructor_img-icon'>
-                  <IconButton
-                    color='primary'
-                    aria-label='upload picture'
-                    component='span'
+      <Grid container spacing={4}>
+        <Grid item>
+          <TheFieldText fieldName='instructor' label='instructor name' />
+        </Grid>
+        <Grid item>
+          <div className='course-details-instructor'>
+            <Field name='instructorImg'>
+              {({ form, field }) => {
+                return (
+                  <label
+                    className='course-details-instructor_img-label'
+                    htmlFor='icon-button-file'
                   >
-                    <PhotoCamera />
-                  </IconButton>
-                </div>
-              </label>
-            )
-          }}
-        </Field>
-      </div>
+                    <img
+                      className='course-info_img'
+                      src={
+                        values.instructorImg ||
+                        'https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_640.png'
+                      }
+                      alt='instructor avatar'
+                    />
+                    <input
+                      accept='image/*'
+                      id='icon-button-file'
+                      type='file'
+                      error={
+                        form.errors.instructorImg && form.touched.instructorImg
+                      }
+                      onChange={e => {
+                        const file = e.target.files[0]
+                        if (file && file.type.substring(0, 5) === 'image') {
+                          setFileImg(file)
+                        } else {
+                          setFileImg(null)
+                        }
+                      }}
+                      style={{ display: 'none' }}
+                    />
+                    <div className='course-details-instructor_img-icon'>
+                      <IconButton
+                        color={values.instructorImg ? 'success' : 'primary'}
+                        aria-label='upload picture'
+                        component='span'
+                      >
+                        <PhotoCamera />
+                      </IconButton>
+                    </div>
+                  </label>
+                )
+              }}
+            </Field>
+          </div>
+        </Grid>
+      </Grid>
+
       <div className='course-details-info'>
         <TheFieldText fieldName='name' label='course name' sx={{ mr: 2 }} />
         <TheFieldText
