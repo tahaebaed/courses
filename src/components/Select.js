@@ -1,4 +1,10 @@
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material'
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  Typography,
+} from '@mui/material'
 import { Field } from 'formik'
 import React from 'react'
 
@@ -7,10 +13,10 @@ const SelectInput = ({ name, errors, values, ...rest }) => {
 
   return (
     <FormControl sx={{ minWidth: 150 }}>
+      <InputLabel id={name}>difficulty</InputLabel>
       <Field id={name} name={name} {...rest}>
         {({ field, form }) => (
           <>
-            <InputLabel id={name}>difficulty</InputLabel>
             <Select
               labelId={name}
               id='demo-simple-select'
